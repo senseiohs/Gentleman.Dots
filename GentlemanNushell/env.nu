@@ -110,17 +110,19 @@ $env.PATH = (
     | prepend ($env.HOME | path join ".nix-profile/bin")
     | prepend '/nix/var/nix/profiles/default/bin'
     | append '/usr/local/bin'
-    | append ($env.HOME | path join ".config")
-    | append ($env.HOME | path join ".cargo/bin")
+    | append ($env.HOME | path join ".config")    
+    | append ($env.HOME | path join ".cargo/bin")    
     | append '/usr/local/lib/*'
 )
+
+$env.PATH = ($env.PATH | append '/home/linuxbrew/.linuxbrew/bin')
 
 $env.STARSHIP_CONFIG = $env.HOME | path join ".config/starship.toml"
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 
-if ((ls ~/.cache | where name == "starship" | length) == 0) {
-    mkdir ~/.cache/starship
-}
+#if ((ls ~/.cache | where name == "starship" | length) == 0) {
+#    mkdir ~/.cache/starship
+#}
 
 if ((ls ~/.cache | where name == "carapace" | length) == 0) {
     mkdir ~/.cache/carapace
@@ -130,7 +132,8 @@ if ((ls ~/.local/share | where name == "atuin" | length) == 0) {
     mkdir ~/.local/share/atuin
 }
 
-starship init nu | save -f ~/.cache/starship/init.nu
-zoxide init nushell | save -f ~/.zoxide.nu
+#starship init nu | save -f ~/.cache/starship/init.nu
+#starship init nu | save -f ~/.config/nushell/starship.nu
+#zoxide init nushell | save -f ~/.zoxide.nu
 atuin init nu | save -f ~/.local/share/atuin/init.nu
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
