@@ -916,11 +916,16 @@ def fzfnvim [] {
   nvim (fzf --preview "bat --theme=gruvbox-dark --color=always {}")
 }
 
- source ~/.zoxide.nu
- source ~/.cache/carapace/init.nu
- source ~/.local/share/atuin/init.nu
- use ~/.cache/starship/init.nu
+ #source ~/.zoxide.nu
+ #source ~/.cache/carapace/init.nu
+ #source ~/.local/share/atuin/init.nu
+ #use ~/.cache/starship/init.nu
+ #use starship.nu 
+ #use ~/.config/nushell/zoxide.nu
  use ~/.config/bash-env.nu
+ use ~/.config/nushell/starship.nu
+ use ~/.zoxide.nu
+
 
 let MULTIPLEXER = "tmux" 
 let MULTIPLEXER_ENV_PREFIX = "TMUX"
